@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.note.dao.NoteDao">
+	<insert id="save"
+		parameterType="cn.tedu.note.entity.Note">
+		insert into cn_note
+			(cn_note_id,
+			cn_note_name,
+			cn_note_context,
+			cn_note_owner,
+			cn_note_bz,
+			cn_note_share,
+			cn_note_createdate)
+		values
+			(#{0}, #{1}, #{2},
+			#{3}, #{4}, #{5}, #{6})
+	</insert>
+	<update id="updateNoteById"
+		parameterType="cn.tedu.note.entity.Note">
+		update cn_note
+			set cn_note_name=#{1},
+			cn_note_context=#{2},
+			cn_note_bz=#{4},
+			cn_note_share=#{5},
+			cn_note_updatedate=#{6}
+		where
+			cn_note_id=#{0}
+	</update>
+	<select id="select"
+		resultType="cn.tedu.note.entity.Note">
+		select 
+			cn_note_id as id,  
+			cn_note_name as name,
+			cn_note_context as context
+		from 
+			cn_note
+		where
+			cn_note_owner = #{0} and
+			(cn_note_name  like #{1} or
+			cn_note_bz  like #{1})
+		order by cn_note_updatedate desc
+	</select>
+	<select id="Note_Col"
+		resultType="cn.tedu.note.entity.Note">
+		select 
+			cn_note_id as id,  
+			cn_note_name as name,
+			cn_note_context as context 
+		from 
+			cn_note
+		where
+			cn_note_share = 1
+		order by cn_note_updatedate desc
+	</select>
+	<select id="findNoteById"
+		resultType="cn.tedu.note.entity.Note">
+		select 
+			cn_note_id as id,  
+			cn_note_name as name,
+			cn_note_context as context,
+			cn_note_share as share
+		from 
+			cn_note
+		where 
+		cn_note_id=#{id}
+	</select>
+</mapper>
+
+
+
+
+
+
+

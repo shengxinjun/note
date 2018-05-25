@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>论坛</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="x-pjax-version" content="v173">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="ico/favico-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="ico/favico-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="ico/favico-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="ico/favico-57-precomposed.png">
+<link rel="shortcut icon" href="ico/favico.png">
+<link rel="shortcut icon" href="ico/favico.ico">
+<link rel="stylesheet" href="styles/icon.css" />
+<link rel="stylesheet" href="styles/main.css" />
+<link rel="stylesheet" href="styles/prettify.css" />
+</head>
+<body class="animated fadeIn">
+	<header class="header">
+		<div class="header-brand">
+			<a data-pjax=".content-body" href="edit.html"> <img
+				class="brand-logo" src="images/dummy/blog_log.png" alt="blog_logo">
+			</a>
+		</div>
+		<div class="header-profile">
+			<div class="profile-nav">
+				您好，<span class="profile-username"></span> <a class="dropdown-toggle"
+					data-toggle="dropdown"> <span class="fa fa-angle-down"></span>
+				</a>
+				<ul class="dropdown-menu animated flipInX pull-right" role="menu">
+					<!-- <li><a href="Change_password.html"><i class="fa fa-user"></i>
+							修改密码</a></li> 
+					<li class="divider"></li>-->
+					<li><a id="logout" onclick="cleanCookie()"><i
+							class="fa fa-sign-out"></i> 退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<ul class="hidden-xs header-menu pull-right">
+			<li><a href="download.html" target='_blank' title="下载">下载</a></li>
+		</ul>
+		<ul class="hidden-xs header-menu pull-right">
+			<li><a href="edit.html" title="我的博客">我的博客</a></li>
+		</ul>
+	</header>
+	<div class="row" style='padding: 0;'>
+		<!-- 活动第三列 -->
+		<div class="col-sm-12" id='action_part'>
+			<aside class="side-right" id='side_right'>
+				<div class="module" data-toggle="niceScroll">
+					<div class="chat-contact">
+						<div class="contact-body clear_margin">
+							<h3 class="lead">
+								<i class="fa fa-rss"></i> 热帖
+							</h3>
+							<div class="row">
+								<div class="col-sm-3" id='col_0'>
+									<div id="blog_cllection"></div>
+								</div>
+								<div class="col-sm-9 pull-right" id='col_1'
+									style="min-height: 500px; border-left: 1px solid #ccc;">
+									<!--- 博客标题 --->
+									<div class="row">
+										<div class="col-xs-12" style="border-bottom: 1px solid #ccc;">
+											<input type="hidden" id="note_id"> <span
+												class="col-xs-2" style="font-size: 26px; line-height: 200%">标题</span><span
+												class='col-xs-8'><a
+												style="font-size: 26px; line-height: 200%"
+												id="input_note_title"></a></span>
+										</div>
+									</div>
+									<!--- 博客标题 --->
+									<div class="row" style="min-height: 300px;">
+										<div class="col-sm-12" id="myEditor"></div>
+									</div>
+									<!--- 评论 --->
+									<div class="row">
+										<div class="col-sm-11 pull-right" id="Comments"></div>
+									</div>
+									<!--- 我的评论 --->
+									<div class="row">
+										<textarea id="comment" class="col-sm-10 form-control" rows="3"
+											placeholder='说点儿什么吧...'></textarea>
+									</div>
+									<!-- 提交按钮 -->
+									<div class="row">
+										<button type="button" id="submit"
+											class="btn btn-primary btn-lg btn-block">提交</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+		<!-- 活动第三列 -->
+	</div>
+	<footer>
+		<p>&copy; 2018 shengxinjun</p>
+	</footer>
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<!-- Bootstrap框架JS -->
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/edit.js"></script>
+	<script type="text/javascript" src="scripts/forum.js"></script>
+	<script type="text/javascript">
+		function get_dom(e) {
+			return document.getElementById(e);
+		}
+		function set_height() {
+			var pc_height = window.innerHeight;
+			pc_height = pc_height - 100;
+			get_dom('side_right').style.height = pc_height + 'px';
+		}
+		set_height();
+		window.onresize = function() {
+			set_height();
+		}
+	</script>
+</body>
+</html>
